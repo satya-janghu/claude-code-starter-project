@@ -26,7 +26,7 @@ An interactive bash script that creates a complete Claude Code project starter w
 ### Run the Script
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh | bash
+wget -O setup.sh https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh && chmod +x setup.sh && ./setup.sh
 ```
 
 Or clone and run locally:

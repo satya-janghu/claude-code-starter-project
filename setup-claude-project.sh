@@ -2,16 +2,6 @@
 
 set -e
 
-# If script is being piped, download and execute locally for interactive input
-if [ ! -t 0 ]; then
-    echo "Downloading script for interactive execution..."
-    TEMP_SCRIPT=$(mktemp)
-    curl -fsSL https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh > "$TEMP_SCRIPT"
-    chmod +x "$TEMP_SCRIPT"
-    trap "rm -f $TEMP_SCRIPT" EXIT
-    exec "$TEMP_SCRIPT" "$@"
-fi
-
 # Repository URL (will be updated with actual GitHub repo)
 REPO_URL="https://github.com/satya-janghu/claude-code-starter-project.git"
 REPO_NAME="claude-code-starter-project"
