@@ -71,6 +71,14 @@ cp -r .[^.]* "$PROJECT_DIR/" 2>/dev/null || true
 cd "$PROJECT_DIR"
 rm -rf "$REPO_NAME"
 
+# Remove settings.json on non-macOS systems (terminal-notifier dependency)
+if [[ "$(uname)" != "Darwin" ]]; then
+    if [[ -f ".claude/settings.json" ]]; then
+        rm ".claude/settings.json"
+        echo "✓ Removed settings.json (terminal-notifier not available on non-macOS)"
+    fi
+fi
+
 echo "✓ Starter template installed successfully"
 
 echo
