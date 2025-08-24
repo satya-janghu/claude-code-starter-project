@@ -2,6 +2,16 @@
 
 set -e
 
+# If script is being piped, download and execute locally for interactive input
+if [ ! -t 0 ]; then
+    echo "Downloading script for interactive execution..."
+    TEMP_SCRIPT=$(mktemp)
+    curl -fsSL https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh > "$TEMP_SCRIPT"
+    chmod +x "$TEMP_SCRIPT"
+    trap "rm -f $TEMP_SCRIPT" EXIT
+    exec "$TEMP_SCRIPT" "$@"
+fi
+
 # Repository URL (will be updated with actual GitHub repo)
 REPO_URL="https://github.com/satya-janghu/claude-code-starter-project.git"
 REPO_NAME="claude-code-starter-project"
@@ -75,11 +85,11 @@ echo "✓ Starter template installed successfully"
 
 echo
 echo "Would you like to install the Context7 MCP server? (y/n)"
-read -r install_context7 < /dev/tty
+read -r install_context7
 
 if [[ "$install_context7" =~ ^[Yy]$ ]]; then
     echo "Enter your Context7 API key (optional - press Enter to skip for lower rate limits):"
-    read -r context7_api_key < /dev/tty
+    read -r context7_api_key
     
     echo "Installing Context7 MCP server..."
     cd "$PROJECT_DIR"
@@ -95,7 +105,7 @@ fi
 
 echo
 echo "Would you like to install the Playwright MCP server? (y/n)"
-read -r install_playwright < /dev/tty
+read -r install_playwright
 
 if [[ "$install_playwright" =~ ^[Yy]$ ]]; then
     echo "Installing Playwright MCP server..."
@@ -108,7 +118,7 @@ fi
 
 echo
 echo "Would you like to install the Serena MCP server? (y/n)"
-read -r install_serena < /dev/tty
+read -r install_serena
 
 if [[ "$install_serena" =~ ^[Yy]$ ]]; then
     echo "Installing Serena MCP server..."
@@ -121,11 +131,11 @@ fi
 
 echo
 echo "Would you like to install the Zen MCP server? (y/n)"
-read -r install_zen < /dev/tty
+read -r install_zen
 
 if [[ "$install_zen" =~ ^[Yy]$ ]]; then
     echo "Please enter your Gemini API key:"
-    read -r gemini_api_key < /dev/tty
+    read -r gemini_api_key
     
     if [[ -n "$gemini_api_key" ]]; then
         echo "Installing Zen MCP server..."
