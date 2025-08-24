@@ -75,11 +75,11 @@ echo "✓ Starter template installed successfully"
 
 echo
 echo "Would you like to install the Context7 MCP server? (y/n)"
-read -r install_context7
+read -r install_context7 < /dev/tty
 
 if [[ "$install_context7" =~ ^[Yy]$ ]]; then
     echo "Enter your Context7 API key (optional - press Enter to skip for lower rate limits):"
-    read -r context7_api_key
+    read -r context7_api_key < /dev/tty
     
     echo "Installing Context7 MCP server..."
     cd "$PROJECT_DIR"
@@ -95,7 +95,7 @@ fi
 
 echo
 echo "Would you like to install the Playwright MCP server? (y/n)"
-read -r install_playwright
+read -r install_playwright < /dev/tty
 
 if [[ "$install_playwright" =~ ^[Yy]$ ]]; then
     echo "Installing Playwright MCP server..."
@@ -108,7 +108,7 @@ fi
 
 echo
 echo "Would you like to install the Serena MCP server? (y/n)"
-read -r install_serena
+read -r install_serena < /dev/tty
 
 if [[ "$install_serena" =~ ^[Yy]$ ]]; then
     echo "Installing Serena MCP server..."
@@ -121,11 +121,11 @@ fi
 
 echo
 echo "Would you like to install the Zen MCP server? (y/n)"
-read -r install_zen
+read -r install_zen < /dev/tty
 
 if [[ "$install_zen" =~ ^[Yy]$ ]]; then
     echo "Please enter your Gemini API key:"
-    read -r gemini_api_key
+    read -r gemini_api_key < /dev/tty
     
     if [[ -n "$gemini_api_key" ]]; then
         echo "Installing Zen MCP server..."
