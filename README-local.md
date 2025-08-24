@@ -26,14 +26,14 @@ An interactive bash script that creates a complete Claude Code project starter w
 ### Run the Script
 
 ```bash
-# Download and run
-curl -fsSL https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh | bash
+# Download and run (replace with actual GitHub raw URL)
+curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/setup-claude-project.sh | bash
 ```
 
 Or clone and run locally:
 ```bash
-git clone https://github.com/satya-janghu/claude-code-starter-project.git
-cd claude-code-starter-project
+git clone https://github.com/USER/REPO.git
+cd REPO
 ./setup-claude-project.sh
 ```
 
