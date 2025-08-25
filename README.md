@@ -26,6 +26,11 @@ An interactive bash script that creates a complete Claude Code project starter w
 ### Run the Script
 
 ```bash
+bash <(curl -s https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh)
+```
+
+Or download and run:
+```bash
 wget -O setup.sh https://raw.githubusercontent.com/satya-janghu/claude-code-starter-project/main/setup-claude-project.sh && chmod +x setup.sh && ./setup.sh
 ```
 
@@ -38,12 +43,20 @@ cd claude-code-starter-project
 
 ### What Happens
 1. **System check** - Verifies Python 3.10+ and uvx are installed
-2. **Template setup** - Copies starter files to current directory
-3. **Interactive MCP installation** - Choose which servers to install:
+2. **State detection** - Checks for previous installations and offers repair/update options
+3. **Template setup** - Copies starter files, preserving any customizations
+4. **Interactive MCP installation** - Choose which servers to install or repair:
    - Context7 (optional API key for higher rate limits)
    - Playwright (browser automation)
    - Serena (semantic code analysis) 
    - Zen (AI orchestration with Gemini API key)
+
+### Script Features
+- **Idempotent** - Safe to run multiple times
+- **Resumable** - Continues from where it left off after failures
+- **Smart Updates** - Preserves your customized CLAUDE.md and pattern files
+- **Repair Mode** - Fix broken MCP server configurations
+- **Backup System** - Creates timestamped backups before changes
 
 ## MCP Server Details
 
